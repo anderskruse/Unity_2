@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
+    public int destroyTime;
     public GameObject explosion;
-    private GameObject expl;
+    private GameObject explo;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,9 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Destroy(gameObject, 5);
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,11 +26,12 @@ public class BulletScript : MonoBehaviour
 
         if(other.gameObject.transform.tag == "Enemy")
         {
-            expl = Instantiate(explosion);
-            expl.transform.position = other.transform.position;
-            expl.gameObject.SetActive(true);
+            explo = Instantiate(explosion);
+            explo.transform.position = other.transform.position;
+            explo.gameObject.SetActive(true);
             other.gameObject.SetActive(false);
         }
         
     }
+
 }
